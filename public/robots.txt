@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+
+# If you have a sitemap (optional but recommended)
+Sitemap: https://manikandandevportfolio.netlify.app/robots.txt

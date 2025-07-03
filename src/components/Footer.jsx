@@ -3,12 +3,12 @@ import { client } from "../sanity";
 import { TiSocialFacebook, TiSocialTwitter } from "react-icons/ti";
 import { SlSocialInstagram, SlSocialLinkedin } from "react-icons/sl";
 
-// ✅ JS-compatible icon map (no TypeScript types)
+// ✅ Use icon components instead of JSX elements
 const iconMap = {
-  facebook: <TiSocialFacebook />,
-  instagram: <SlSocialInstagram />,
-  twitter: <TiSocialTwitter />,
-  linkedin: <SlSocialLinkedin />,
+  facebook: TiSocialFacebook,
+  instagram: SlSocialInstagram,
+  twitter: TiSocialTwitter,
+  linkedin: SlSocialLinkedin,
 };
 
 export function Footer() {
@@ -36,16 +36,21 @@ export function Footer() {
     <footer className="bg-white px-6 py-10 text-center md:text-left">
       {/* Social Icons */}
       <div className="flex justify-center md:justify-end gap-6 mb-8 border-b pb-6">
-        {socialLinks.map((link, i) => (
-          <a
-            key={i}
-            href={link.url}
-            aria-label={link.platform}
-            className="text-xl text-gray-600 hover:text-blue-600 transition"
-          >
-            {iconMap[link.platform?.toLowerCase()] || null}
-          </a>
-        ))}
+        {socialLinks.map((link, i) => {
+          const Icon = iconMap[link.platform?.toLowerCase()];
+          return (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit our ${link.platform} page`}
+              className="text-xl text-gray-600 hover:text-blue-600 transition"
+            >
+              {Icon && <Icon aria-hidden="true" />}
+            </a>
+          );
+        })}
       </div>
 
       {/* Bottom Info */}
@@ -59,7 +64,12 @@ export function Footer() {
 
         <div className="flex flex-wrap justify-center md:justify-end gap-4 text-sm text-gray-600">
           {footerLinks.map((link, i) => (
-            <a key={i} href={link.url} className="hover:underline transition">
+            <a
+              key={i}
+              href={link.url}
+              className="hover:underline transition"
+              aria-label={link.label}
+            >
               {link.label}
             </a>
           ))}
