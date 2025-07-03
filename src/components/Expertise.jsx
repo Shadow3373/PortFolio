@@ -71,7 +71,7 @@ export default function Expertise() {
             key={index}
             className="rounded-lg shadow-sm bg-[#F5FCFF] justify-center flex flex-col items-center p-6 border-b-6 border-transparent hover:scale-105 hover:border-b-6 cursor-pointer rounded-b-lg hover:border-[#5E3BEE] text-center hover:shadow-md transition"
           >
-            <div className="text-3xl rounded-lg p-2 mb-4 w-fit h-fit bg-red-700 text-white">
+            <div className="text-3xl rounded-lg p-2 mb-4 w-fit h-fit bg-white text-black">
               {skill.icon}
             </div>
             <h3 className="font-semibold text-lg mb-2">{skill.title}</h3>
