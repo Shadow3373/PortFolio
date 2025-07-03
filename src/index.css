@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: "Manufacturing Consent";
+    src: url("/fonts/ManufacturingConsent-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
